@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:index" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:index" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:index">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="insertSnikearRequest">
+    <wsdl:part name="marca" type="xsd:string" />
+    <wsdl:part name="nombre" type="xsd:string" />
+    <wsdl:part name="precio" type="xsd:int" />
+    <wsdl:part name="color" type="xsd:string" />
+    <wsdl:part name="material" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="insertSnikearResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSnikearRequest">
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSnikearResponse">
+    <wsdl:part name="data" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="DelSnikearRequest">
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="DelSnikearResponse">
+    <wsdl:part name="data" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdaSnikearRequest">
+    <wsdl:part name="id" type="xsd:int" />
+    <wsdl:part name="marca" type="xsd:string" />
+    <wsdl:part name="nombre" type="xsd:string" />
+    <wsdl:part name="precio" type="xsd:int" />
+    <wsdl:part name="color" type="xsd:string" />
+    <wsdl:part name="material" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdaSnikearResponse">
+    <wsdl:part name="data" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="indexPortType">
+    <wsdl:operation name="insertSnikear">
+      <documentation>Metodo que inserta Tenis</documentation>
+      <wsdl:input message="tns:insertSnikearRequest" />
+      <wsdl:output message="tns:insertSnikearResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSnikear">
+      <documentation>Metodo que inserta Tenis</documentation>
+      <wsdl:input message="tns:GetSnikearRequest" />
+      <wsdl:output message="tns:GetSnikearResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DelSnikear">
+      <documentation>Metodo que elimina Tenis</documentation>
+      <wsdl:input message="tns:DelSnikearRequest" />
+      <wsdl:output message="tns:DelSnikearResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdaSnikear">
+      <documentation>Metodo que Actualiza Tenis</documentation>
+      <wsdl:input message="tns:UpdaSnikearRequest" />
+      <wsdl:output message="tns:UpdaSnikearResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="indexBinding" type="tns:indexPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="insertSnikear">
+      <soap:operation soapAction="urn:index#insertSnikear" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSnikear">
+      <soap:operation soapAction="urn:index#GetSnikear" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelSnikear">
+      <soap:operation soapAction="urn:index#DelSnikear" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdaSnikear">
+      <soap:operation soapAction="urn:index#UpdaSnikear" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="index">
+    <wsdl:port name="indexPort" binding="tns:indexBinding">
+      <soap:address location="http://app-9c76bc9f-d6b8-4221-83fd-9e8cd702204f.cleverapps.io/index.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
